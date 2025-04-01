@@ -16,44 +16,9 @@ function is_git {
 }
 
 function vcs_git_is_clean {
-	# if [ -z "$(git status --porcelain)" ]; then
-	# 	return 0;
-	# fi
-
-	# return 1;
 	git diff-index --quiet HEAD -- &> /dev/null
 }
 
-# function vcs_git_diff_count {
-# 	git status --porcelain | wc -l | tr -d ' '
-# }
-
-# function dream_prompt_vcs_info {
-# 	local vcs_type=''
-# 	local vcs_branch='known'
-# 	local vcs_change=''
-# 	local vcs_diff_count=0
-
-# 	if is_git; then
-# 		vcs_type="%{$fg[blue]%}git"
-# 		vcs_branch="${DRM_VCS_PROMPT_SEPARATOR}%{$fg[cyan]%}$(git_current_branch)"
-# 		vcs_diff_count=$(vcs_git_diff_count)
-
-# 		if [ $vcs_diff_count -gt 0 ]; then
-# 			vcs_change="${DRM_VCS_PROMPT_SEPARATOR}%{$fg[red]%}${vcs_diff_count}"
-# 		fi
-
-# 	else
-# 		return -1
-# 	fi
-
-# 	echo -n "${DRM_VCS_PROMPT_BRAKET_1}${vcs_type}${vcs_branch}${vcs_change}${DRM_VCS_PROMPT_BRAKET_2}"
-
-# 	return $vcs_diff_count
-# }
-
-local cached_count=''
-local my_count=0
 local dream_prompt_vcs=''
 local dream_prompt_char=''
 
